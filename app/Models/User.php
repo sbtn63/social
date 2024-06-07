@@ -28,6 +28,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
+    // Usuarios que este usuario sigue
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'follower_id', 'followed_id');
+    }
+
+    // Usuarios que siguen a este usuario
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'follower_id');
+    }
+    
     public function posts() : HasMany
     {
         return $this->hasMany(Post::class);

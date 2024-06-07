@@ -18,7 +18,7 @@ class PostController extends Controller
             $post->liked = $liked;
         }
 
-        return view('post.posts', compact('posts'));
+        return view('post.list', compact('posts'));
     }
 
     public function store(Request $request)
