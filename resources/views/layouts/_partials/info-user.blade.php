@@ -1,12 +1,17 @@
-<div class="rounded-t-lg h-32 overflow-hidden">
-    <img class="object-cover object-top w-full" src='https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Mountain'>
+<div class="rounded-t-lg h-44 overflow-hidden">
+    <div>
+    <a href="{{ route('cover.edit') }}" class="">
+        <img class="object-cover object-top w-full overflow-hidden" src='@if ($user->cover_url)
+        {{ asset('cover/'.$user->cover_url) }}
+        @else
+        https://images.unsplash.com/photo-1549880338-65ddcdfd017b?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ
+        @endif' alt='Mountain'>
+    </a>
+    </div>
 </div>
-<div class="mx-auto w-32 h-32 relative -mt-16 border-4 border-white rounded-full overflow-hidden">
-        <img class="object-cover object-center h-32" src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ' alt='Woman looking front'>
-</div>
+       
 <div class="text-center mt-2">
         <h2 class="font-semibold">{{ '@'.$user->username }}</h2>
-        <p class="text-gray-500">Freelance Web Designer</p>
 </div>
 <ul class="py-4 mt-2 text-gray-700 flex items-center justify-around">
     <li class="flex flex-col items-center justify-around">

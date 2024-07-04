@@ -13,6 +13,9 @@ Route::get('/register', [AuthController::class, 'create'])->name('create');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('profile/cover', [UserController::class, 'editCover'])->name('cover.edit');
+    Route::put('profile/cover', [UserController::class, 'updateCover'])->name('cover.update');
+
     Route::get('profile/{user}', [UserController::class, 'profile'])->name('profile');
     Route::post('logout/', [AuthController::class, 'destroy'])->name('logout');
 

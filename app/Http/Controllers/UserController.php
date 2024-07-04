@@ -10,6 +10,23 @@ use Auth;
 
 class UserController extends Controller
 {
+
+    public function editCover()
+    {
+        return view('user.cover');
+    }
+
+    public function updateCover(Request $request)
+    {
+        $user = Auth::user();
+        $fileName = $user->username.time(). '.' . $request->image->extension();
+        $request->image->move(public_path('cover'), $fileName);
+        $user->cover_url = $fileName;
+        $user->save();
+
+        return redirect()->route('profile', $user->id);
+    }
+
     public function profile(User $user) {
         $posts = Post::where('user_id', $user->id)->orderBy('created_at', 'desc')->get();
 
